@@ -48,5 +48,22 @@ fetch(wikiURL)
 
 function displayData(data){
     loading.classList.remove("showItem");
-    console.log(data);
+    const {search:results} = data.query;
+
+    let info = '';
+    results.forEach( result => {
+        const pageID = 'http://en.wikipedia.org/?curid='
+        const {title,snippet,pageid:link} = result;
+        info +=`
+        <div class="col-10 mx-auto col-md-6 col-lg-4 my-3">
+            <div class="card card-body">
+            <h1 class="card-title blueText">${title}</h1>
+            <p>${snippet}</p>
+            <a href="${pageID}${link}" target="_blank" class="my-2 text-capitalize">read
+            more...</a>
+            </div>
+        </div>
+        `
+    })
+    output.innerHTML = info;
 }
