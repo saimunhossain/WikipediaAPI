@@ -41,6 +41,12 @@ const wikiURL = `${base}${url}${search}`;
 
 fetch(wikiURL)
     .then(data => data.json())
-    .then(data => console.log(data));
+    .then(data => displayData(data))
+    .catch(e => console.log(e));
     
+}
+
+function displayData(data){
+    loading.classList.remove("showItem");
+    console.log(data);
 }
