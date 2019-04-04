@@ -7,7 +7,7 @@ const search = document.getElementById("search");
 const feedback = document.querySelector(".feedback");
 
 const base = 'http://en.wikipedia.org/w/api.php';
-const url = '?action=query&format=json&list=search&srsearch=apple';
+const url = '?action=query&format=json&origin=*&list=search&srsearch=apple';
 
 searchForm.addEventListener("submit", function(event){
     event.preventDefault();
@@ -36,6 +36,11 @@ function showFeedback(text){
 function ajaxWiki(search){
     output.innerHTML = "";
     loading.classList.add('showItem');
-    console.log(search);
+    
+const wikiURL = `${base}${url}${search}`;
+
+fetch(wikiURL)
+    .then(data => data.json())
+    .then(data => console.log(data));
     
 }
