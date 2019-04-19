@@ -52,7 +52,7 @@ function displayData(data){
 
     let info = '';
     results.forEach( result => {
-        const pageID = 'http://en.wikipedia.org/?curid='
+        const pageID = 'https://en.wikipedia.org/?curid='
         const {title,snippet,pageid:link} = result;
         info +=`
         <div class="col-10 mx-auto col-md-6 col-lg-4 my-3">
